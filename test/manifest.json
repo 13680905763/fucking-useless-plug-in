@@ -6,12 +6,19 @@
   "author": "Fa&Yao",
   "icons": {
     "16": "img/16icon.png",
-    "48":"img/48icon.png",
-    "128":"img/128icon.png"
+    "48": "img/48icon.png",
+    "128": "img/128icon.png"
   },
-  "browser_action":{
-    "default_icon":"img/16icon.png",
-    "default_title":"fucking-useless-plug-in",
-    "default_popup":"main.html"
-  }
+  "browser_action": {
+    "default_icon": "img/16icon.png",
+    "default_title": "fucking-useless-plug-in",
+    "default_popup": "main.html"
+  },
+  "background": {
+    "page": "back.html"
+  },
+  "permissions": [
+    "tags",
+    "*://*/*"
+  ]
 }

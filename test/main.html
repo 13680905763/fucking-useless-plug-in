@@ -31,13 +31,20 @@
       bottom: 0;
       display: flex;
       justify-content: space-around;
+      height: 50px;
+      line-height: 50px;
     }
 
     footer div {
       flex: 1;
+
     }
 
+    footer .fBtn {}
+
     footer .fBtn:hover {
+      cursor: pointer;
+      text-decoration: underline;
       color: aqua;
     }
   </style>
@@ -48,20 +55,19 @@
     <div class="logo">
       FUPI
     </div>
-
   </header>
   <div class="container">
     <ul>
-      <li>复制</li>
-      <li>翻译</li>
-      <li>抢购</li>
+      <!-- <li>复制</li> -->
+      <!-- <li>翻译</li> -->
+      <!-- <li>抢购</li> -->
     </ul>
   </div>
   <footer>
-    <div><span class="fBtn">设置</span></div>
-    <div><span class="fBtn">反馈</span></div>
+    <div><span class="fBtn" id="settingBtn">设置</span></div>
+    <div><span class="fBtn" id="feedbackBtn">反馈</span></div>
   </footer>
-
+  <script type="text/javascript" src="./js/main.js"></script>
 </body>
 
 </html>

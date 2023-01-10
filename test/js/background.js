@@ -1,1 +1,5 @@
-console.log('background  执行');
+const settingBtn = document.getElementById('settingBtn')
+
+settingBtn.addEventListener('click', () => {
+  window.open(chrome.extension.getURL('back.html'))
+})
