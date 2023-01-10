@@ -2,7 +2,7 @@ const settingBtn = document.getElementById('settingBtn')
 const feedbackBtn = document.getElementById('feedbackBtn')
 
 settingBtn.addEventListener('click', () => {
-  window.open(chrome.extension.getURL('back.html'))
+  window.open(chrome.extension.getURL('../background/dist/index.html'))
 })
 feedbackBtn.addEventListener('click', () => {
   chrome.tabs.create({
