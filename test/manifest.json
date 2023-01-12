@@ -15,7 +15,7 @@
     "default_popup": "main.html"
   },
   "background": {
-    "page": "back.html"
+    "page": "./background/dist/index.html"
   },
   "permissions": [
     "tags",
