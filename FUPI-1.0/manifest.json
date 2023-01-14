@@ -23,7 +23,7 @@
         "js/content_script.js"
       ],
       "matches": [
-        "*://juejin.cn/*"
+        "<all_urls>"
       ]
     }
   ],

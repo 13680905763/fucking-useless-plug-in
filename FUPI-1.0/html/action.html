@@ -2,11 +2,10 @@
  * @Author: ZhangYuHua
  * @Date: 2023-01-12 20:45:10
  * @LastEditors: ZhangYuHua
- * @LastEditTime: 2023-01-13 00:57:13
+ * @LastEditTime: 2023-01-14 17:25:31
  * @Note: 未添加注意事项
  * @Description: 工具栏
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,23 +17,84 @@
   <style>
     body {
       margin: 0 auto;
-      width: 280px;
-      height: 340px;
+      width: 240px;
+      height: 300px;
       text-align: center;
-    }
-
-    ul {
-      padding: 0;
-      list-style: none;
-    }
-
-    ul li {
-      display: inline-block;
     }
 
     header {
       font-size: 25px;
       font-weight: 900;
+      border-bottom: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    .colorWrapper {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      height: 200px;
+      width: 200px;
+    }
+
+    .colorBar {
+      position: relative;
+      width: 20px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .colorSlider {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      border: 8px solid transparent;
+      border-right-color: #888;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .colorOperate {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 162px;
+    }
+
+    .colorBlock ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      margin-right: -2px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .colorBlock ul li {
+      margin: 0 2px 2px 0;
+      width: 39px;
+      height: 39px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .colorShow {
+      border: 1px solid black;
+      height: 66px;
+    }
+
+    .submit {
+      height: 34px;
+      line-height: 34px;
+      border-radius: 10px;
+      background-color: rgb(22, 199, 255);
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
     }
 
     footer {
@@ -42,23 +102,18 @@
       left: 0;
       right: 0;
       bottom: 0;
-      display: flex;
-      justify-content: space-around;
-      height: 50px;
-      line-height: 50px;
-    }
-
-    footer div {
-      flex: 1;
+      padding-right: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: right;
+      border-top: 1px solid black;
 
     }
-
-    footer .fBtn {}
 
     footer .fBtn:hover {
       cursor: pointer;
       text-decoration: underline;
-      color: aqua;
+      color: red;
     }
   </style>
 </head>
@@ -70,15 +125,48 @@
     </div>
   </header>
   <div class="container">
-    <p>切换主题</p>
-    <ul>
-      <li class='colorItem' style="color: rgb(115, 243, 200);" data-color="rgb(115, 243, 200)">天空蓝</li>
-      <li class='colorItem' style="color: rgb(205, 19, 19);" data-color="rgb(205, 19, 19)">玫瑰红</li>
-      <li class='colorItem' style="color: rgb(101, 223, 49);" data-color="rgb(101, 223, 49)">青草绿</li>
-    </ul>
+    <div class="colorWrapper">
+      <div class="colorBar">
+        <svg>
+          <defs>
+            <linearGradient id="gradient-hsv" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#FF0000" stop-opacity="1"></stop>
+              <stop offset="13%" stop-color="#FF00FF" stop-opacity="1"></stop>
+              <stop offset="25%" stop-color="#8000FF" stop-opacity="1"></stop>
+              <stop offset="38%" stop-color="#0040FF" stop-opacity="1"></stop>
+              <stop offset="50%" stop-color="#00FFFF" stop-opacity="1"></stop>
+              <stop offset="63%" stop-color="#00FF40" stop-opacity="1"></stop>
+              <stop offset="75%" stop-color="#0BED00" stop-opacity="1"></stop>
+              <stop offset="88%" stop-color="#FFFF00" stop-opacity="1"></stop>
+              <stop offset="100%" stop-color="#FF0000" stop-opacity="1"></stop>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient-hsv)"></rect>
+        </svg>
+        <div class="colorSlider"></div>
+      </div>
+
+      <div class="colorOperate">
+        <div class="colorBlock">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="colorShow"></div>
+        <div class="submit">
+          <span>确定修改</span>
+        </div>
+      </div>
+    </div>
   </div>
   <footer>
-    <!-- <div><span class="fBtn" id="settingBtn">设置</span></div> -->
     <div><span class="fBtn" id="feedbackBtn">反馈</span></div>
   </footer>
   <script type="text/javascript" src="../js/action.js"></script>
