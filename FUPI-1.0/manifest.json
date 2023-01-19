@@ -14,9 +14,7 @@
     "default_title": "fucking-useless-plug-in",
     "default_popup": "html/action.html"
   },
-  "background": {
-    "service_worker": "js/background.js"
-  },
+
   "content_scripts": [
     {
       "js": [
@@ -28,9 +26,7 @@
     }
   ],
   "permissions": [
-    "tabs",
-    "notifications",
-    "storage"
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"

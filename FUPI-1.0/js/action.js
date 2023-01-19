@@ -1,5 +1,3 @@
-const feedbackBtn = document.getElementById('feedbackBtn')
-
 const colorBlock = [
   'aliceblue',
   'beige',
@@ -10,25 +8,15 @@ const colorBlock = [
   'aquamarine',
   'mediumpurple'
 ]
+// 工具箱渐变背景色（拿颜色块做渐变）
+const linearGradientColor = colorBlock.join()
+document.querySelector('body').style.background = `linear-gradient(${linearGradientColor})`
 
 let resultColor = '' // 选中的颜色
-//监听content发过来的默认背景色
-// chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-//   // 设置默认背景色
-//   console.log(request);
-//   resultColor = request.defaultBgColor || ''
-//   setColorShow(resultColor)
-// })
-
 // 颜色块
 const colorBlockItemElm = document.querySelector('.colorBlock').querySelectorAll('li')
-
-// 提交按钮
-const submitElm = document.querySelector('.submit')
-
 // 颜色展示区域
 const colorShowElm = document.querySelector('.colorShow')
-
 // 颜色块初始化
 colorBlockItemElm.forEach((item, index) => {
   item.style.background = colorBlock[index]
@@ -39,11 +27,35 @@ colorBlockItemElm.forEach((item, index) => {
   })
 })
 
-// action body背景色初始化
-// const linearGradientColor = colorBlock.join()
-// document.querySelector('body').style.background = `linear-gradient(${linearGradientColor})`
+// 设置选中颜色
+const setColorShow = (color) => {
+  colorShowElm.style.background = color
+}
+// 提交按钮
+const submitElm = document.querySelector('.submit')
+// 提交点击
+submitElm.addEventListener('click', () => {
+  chrome.tabs.query(
+    {
+      active: true,
+      currentWindow: true
+    },
+    (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { bgColor: resultColor })
+    }
+  )
+})
+//反馈按钮
+const feedbackBtn = document.getElementById('feedbackBtn')
+// 反馈
+feedbackBtn.addEventListener('click', () => {
+  chrome.tabs.create({
+    url: 'https://github.com/13680905763/fucking-useless-plug-in/issues'
+  })
+})
 
-/* 滑块部分 start 直接扒别人的有空研究*/
+// #region
+// 滑块部分 start 直接扒别人的有空研究
 let H = document.querySelector('.colorBar')
 let HRect = H.querySelector('rect')
 let HSlide = H.querySelector('.colorSlider')
@@ -117,28 +129,5 @@ function hsvtorgb(h, s, v) {
   }
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)]
 }
-/* 滑块部分 end */
-
-// 设置选中颜色
-const setColorShow = (color) => {
-  colorShowElm.style.background = color
-}
-// 提交点击
-submitElm.addEventListener('click', () => {
-  chrome.tabs.query(
-    {
-      active: true,
-      currentWindow: true
-    },
-    (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { bgColor: resultColor })
-    }
-  )
-})
-
-// 反馈
-feedbackBtn.addEventListener('click', () => {
-  chrome.tabs.create({
-    url: 'https://github.com/13680905763/fucking-useless-plug-in/issues'
-  })
-})
+// #滑块部分 end
+// #endregion
