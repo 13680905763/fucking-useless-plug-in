@@ -1,14 +1,18 @@
-console.log('fupi注入成功')
+// console.log('fupi插件注入成功...')
 const bodyElm = document.querySelector('body')
-const defaultBgColor = localStorage.getItem('bgColor') || ''
+debugger
+const defaultData =
+  localStorage.getItem('fupiData') !== 'undefined'
+    ? JSON.parse(localStorage.getItem('fupiData'))
+    : ''
 
-const setBgColor = (color) => {
-  localStorage.setItem('bgColor',color)
-  bodyElm.style.background = color
+const setFupiData = (data) => {
+  localStorage.setItem('fupiData', JSON.stringify(data))
+  bodyElm.style.backgroundColor = data.color
+  bodyElm.style.fontFamily = data.font
 }
-setBgColor(defaultBgColor)
-
+setFupiData(defaultData)
 // 监听action发送过来的颜色
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-  setBgColor(request.bgColor)
+  setFupiData(request.fupiData)
 })

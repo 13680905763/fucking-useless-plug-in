@@ -2,7 +2,7 @@
  * @Author: ZhangYuHua
  * @Date: 2023-01-12 20:45:10
  * @LastEditors: ZhangYuHua
- * @LastEditTime: 2023-01-20 01:29:12
+ * @LastEditTime: 2023-03-08 16:16:42
  * @Note: 未添加注意事项
  * @Description: 工具栏
 -->
@@ -29,43 +29,17 @@
       margin-bottom: 20px;
     }
 
-    .colorWrapper {
-      display: flex;
-      justify-content: space-between;
-      margin: 0 auto;
-      height: 200px;
-      width: 200px;
+    .container {
+      padding: 0 10px;
     }
 
-    .colorBar {
-      position: relative;
-      width: 20px;
+    .color-area,
+    .font-area {
+      text-align: left;
+      margin-bottom: 10px
     }
 
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .colorSlider {
-      position: absolute;
-      left: 4px;
-      top: 0;
-      border: 8px solid transparent;
-      border-right-color: #888;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-    }
-
-    .colorOperate {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 162px;
-    }
-
-    .colorBlock ul {
+    .color-area ul {
       display: flex;
       flex-wrap: wrap;
       margin: 0;
@@ -74,16 +48,18 @@
       list-style: none;
     }
 
-    .colorBlock ul li {
-      margin: 0 2px 2px 0;
-      width: 39px;
-      height: 39px;
-      border-radius: 8px;
+    .color-area ul li {
+      box-sizing: border-box;
+      margin: 0 3px 3px 0;
+      width: 41px;
+      height: 41px;
+      border-radius: 50%;
       cursor: pointer;
     }
 
-    .colorShow {
-      height: 66px;
+    input {
+      width: 97%;
+      height: 25px;
       border: 1px solid #000;
       background-color: #fff;
     }
@@ -126,46 +102,18 @@
     </div>
   </header>
   <div class="container">
-    <div class="colorWrapper">
-      <div class="colorBar">
-        <svg>
-          <defs>
-            <linearGradient id="gradient-hsv" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#FF0000" stop-opacity="1"></stop>
-              <stop offset="13%" stop-color="#FF00FF" stop-opacity="1"></stop>
-              <stop offset="25%" stop-color="#8000FF" stop-opacity="1"></stop>
-              <stop offset="38%" stop-color="#0040FF" stop-opacity="1"></stop>
-              <stop offset="50%" stop-color="#00FFFF" stop-opacity="1"></stop>
-              <stop offset="63%" stop-color="#00FF40" stop-opacity="1"></stop>
-              <stop offset="75%" stop-color="#0BED00" stop-opacity="1"></stop>
-              <stop offset="88%" stop-color="#FFFF00" stop-opacity="1"></stop>
-              <stop offset="100%" stop-color="#FF0000" stop-opacity="1"></stop>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient-hsv)"></rect>
-        </svg>
-        <div class="colorSlider"></div>
-      </div>
-
-      <div class="colorOperate">
-        <div class="colorBlock">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-        <div class="colorShow"></div>
-        <div class="submit">
-          <span>确定修改</span>
-        </div>
-      </div>
+    <div class="color-area ">
+      背景颜色：
+      <ul> </ul>
     </div>
+    <div class="font-area">
+      字体样式:
+      <input type="text" placeholder="请输入字体名称" width="100%">
+    </div>
+    <div class="submit">
+      <span>确定修改</span>
+    </div>
+  </div>
   </div>
   <footer>
     <div><span class="fBtn" id="feedbackBtn">反馈</span></div>
