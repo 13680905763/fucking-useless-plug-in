@@ -1,4 +1,4 @@
-// console.log('fupi插件注入成功...')
+console.log('fupi插件注入成功...')
 const bodyElm = document.querySelector('body')
 const defaultData =
   localStorage.getItem('fupiData') !== 'undefined'
@@ -8,7 +8,7 @@ const defaultData =
 const setFupiData = (data) => {
   localStorage.setItem('fupiData', JSON.stringify(data))
   bodyElm.style.backgroundColor = data.color
-  bodyElm.style.fontFamily = data.font
+  bodyElm.style.setProperty('font-family', data.font, 'important')
 }
 setFupiData(defaultData)
 // 监听action发送过来的颜色
