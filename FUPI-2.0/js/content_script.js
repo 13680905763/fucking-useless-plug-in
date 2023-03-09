@@ -1,6 +1,5 @@
 // console.log('fupi插件注入成功...')
 const bodyElm = document.querySelector('body')
-debugger
 const defaultData =
   localStorage.getItem('fupiData') !== 'undefined'
     ? JSON.parse(localStorage.getItem('fupiData'))
